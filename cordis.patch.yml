@@ -1,0 +1,15 @@
+# ============================================================================
+# dsh-yaya-diary —— DSH bundle patch（插件自带的挂载声明）
+# ============================================================================
+# 装进 profile 之后（dsh plugin --profile desktop add <本目录>），
+# 这个 patch 会把插件条目插进配置树。config 里可以覆盖默认值：
+#   enabled / hour / workspace / dshBin / headlessProfile
+
+- insert:
+    - id: yaya-diary
+      name: dsh-yaya-diary
+      config:
+        enabled: true
+        hour: 23
+        workspace: 'E:\DS'
+        headlessProfile: headless
