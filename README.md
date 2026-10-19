@@ -2,6 +2,9 @@
 
 DSH 插件：**每天晚上 23 点，自动让娅娅读当天的会话记录，写一篇日记。**
 
+> 仓库：https://github.com/Mashironkawai/yaya-diary （MIT）
+> 本地目录：`E:\DS\dsh-yaya-diary`（改完 `git push` 就能更新）
+
 ## 它怎么工作
 
 1. 宿主进程里每分钟跳一次（`setInterval(60_000)`，`unref`，随宿主退出自动清理）
@@ -60,3 +63,19 @@ DSH 插件：**每天晚上 23 点，自动让娅娅读当天的会话记录，�
 - 只在 **DSH 桌面版运行着** 的时候才会触发；桌面版没开，那一晚就跳过（不会补跑）
 - 那一轮会消耗一次 LLM 调用的 token（读材料 + 写日记）
 - 日记只写材料里真实发生的事，不编造
+
+## 维护 / 更新
+
+改完 `E:\DS\dsh-yaya-diary` 里的文件后：
+
+```bash
+cd E:\DS\dsh-yaya-diary
+git add -A
+git commit -m "改了什么"
+git push
+```
+
+这台机器上 git 在 `E:\DS\tools\Git\cmd\git.exe`（不在系统 PATH），SSH 认证已配好（`git@github.com:Mashironkawai`）。
+
+> ⚠️ 踩坑（这台机器特有）：PowerShell 5.1 把中文参数传给原生程序会变乱码（曾建出过叫 `-` 的空仓库）。
+> 所以**仓库名用英文**；提交信息如果带中文，用 `git commit -F 文件名` 从 UTF-8 文件读，别直接写命令行参数。
